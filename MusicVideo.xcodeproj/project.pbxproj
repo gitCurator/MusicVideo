@@ -15,6 +15,8 @@
 		3D842B221CAE75CD00B2D2CA /* MusicVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D842B211CAE75CD00B2D2CA /* MusicVideoTests.swift */; };
 		3D842B2D1CAE75CD00B2D2CA /* MusicVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D842B2C1CAE75CD00B2D2CA /* MusicVideoUITests.swift */; };
 		3D842B3F1CAE920E00B2D2CA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D842B3E1CAE920E00B2D2CA /* APIManager.swift */; };
+		3DDC1C191CB1EB3C0057A1F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */; };
+		3DDC1C1B1CB1EE6A0057A1F0 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		3D842B2C1CAE75CD00B2D2CA /* MusicVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideoUITests.swift; sourceTree = "<group>"; };
 		3D842B2E1CAE75CD00B2D2CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D842B3E1CAE920E00B2D2CA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		3D842B001CAE75CD00B2D2CA = {
 			isa = PBXGroup;
 			children = (
+				3DDC1C171CB1EB1A0057A1F0 /* Utils */,
 				3D842B0B1CAE75CD00B2D2CA /* MusicVideo */,
 				3D842B201CAE75CD00B2D2CA /* MusicVideoTests */,
 				3D842B2B1CAE75CD00B2D2CA /* MusicVideoUITests */,
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3D842B3E1CAE920E00B2D2CA /* APIManager.swift */,
+				3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -158,6 +164,14 @@
 				3D842B181CAE75CD00B2D2CA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DDC1C171CB1EB1A0057A1F0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +310,9 @@
 			files = (
 				3D842B3F1CAE920E00B2D2CA /* APIManager.swift in Sources */,
 				3D842B0F1CAE75CD00B2D2CA /* ViewController.swift in Sources */,
+				3DDC1C1B1CB1EE6A0057A1F0 /* MusicVideo.swift in Sources */,
 				3D842B0D1CAE75CD00B2D2CA /* AppDelegate.swift in Sources */,
+				3DDC1C191CB1EB3C0057A1F0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +539,7 @@
 				3D842B331CAE75CD00B2D2CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D842B341CAE75CD00B2D2CA /* Build configuration list for PBXNativeTarget "MusicVideoTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +548,7 @@
 				3D842B361CAE75CD00B2D2CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D842B371CAE75CD00B2D2CA /* Build configuration list for PBXNativeTarget "MusicVideoUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +557,7 @@
 				3D842B391CAE75CD00B2D2CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

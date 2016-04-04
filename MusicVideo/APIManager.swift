@@ -66,7 +66,8 @@ class APIManager {
                 //print(data)
                 do {
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                        as? [String: AnyObject] { // dictionary {}
+                        //as? [String: AnyObject] { // dictionary {}
+                        as? [JSONDictionary] {  //Part4 typealias
                         
                         print(json)
                         
@@ -77,7 +78,7 @@ class APIManager {
                             }
                         }
                     }
-                } catch {
+                } catch { 
                     dispatch_async(dispatch_get_main_queue()) {
                         completion(result: "error in JSONSerialization")
                     }
