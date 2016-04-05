@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    var videos = [Videos]() // <--
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +38,51 @@ class ViewController: UIViewController {
     
     
     
-    func didLoadData(result:String) {   //callBack
+//    func didLoadData(result:String) {   //callBack  + edit videos @part6
+    func didLoadData(videos: [Videos]) {
+        
+        self.videos = videos //  <--
+        
+        for item in videos {
+            print("name = \(item.vName)")
+        }
+        
+        
+        for (index, item) in videos.enumerate() { // <--
+            print("\(index) name = \(item.vName)")
+        }
+        
+        // indexing old fashion
+        // 1.
+        // for i in 0..<videos.count {
+        //      let video = videos[i]
+        //      print("\(i) name = \(video.vName)")
+        //  }
+        //
+        // 2.
+        // for var i = 0; i < videos.count; i++ {
+        //      let video = videos[i]
+        //      print("\(i) name = \(video.vName)")
+        // }
+        
+        
+        
+        
+        
+        
     
 //        print(result)
         
-        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
-            //...
-        }
         
-        alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+          //alert off @part6 and will build in UI
+        
+//        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
+//        let okAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+//            //...
+//        }
+//        
+//        alert.addAction(okAction)
+//        self.presentViewController(alert, animated: true, completion: nil)
     
     }
 }

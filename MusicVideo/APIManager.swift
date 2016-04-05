@@ -11,7 +11,7 @@ import Foundation
 class APIManager {
     
     
-    func loadData(urlString:String, completion: (result:String) -> Void) {
+    func loadData(urlString:String, completion: [Videos] -> Void) { //completion: (result:String) off to Videos: part6
         
         
         // urlString: passing url @controller - url of itune's api. api.loadData(%)
@@ -57,9 +57,15 @@ class APIManager {
             (data, response, error) -> Void in
             
             if error != nil {
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(result: (error!.localizedDescription))
-                }
+                
+                // off fr part6: just print the error
+                //
+                //  dispatch_async(dispatch_get_main_queue()) {
+                //    completion(result: (error!.localizedDescription))
+                //  }
+                
+                print(error!.localizedDescription)
+                
                 
             } else {
                 // JSONSerialization
@@ -67,21 +73,47 @@ class APIManager {
                 do {
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                         //as? [String: AnyObject] { // dictionary {}
-                        as? [JSONDictionary] {  //Part4 typealias
+                        // as? [JSONDictionary] {  //Part4 typealias //edit part6 to follow json str down flow
+                        as? JSONDictionary,
+        
+                        // print(json) off @Part6
+                        feed = json["feed"] as? JSONDictionary,
+                        entries = feed["entry"] as? JSONArray {
                         
-                        print(json)
-                        
-                        let priority = DISPATCH_QUEUE_PRIORITY_HIGH
-                        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                completion(result: "JSONSerialization Successful")
+                            var videos = [Videos]()
+                            for entry in entries {
+                                
+                                //error! : (data: entry as? JSONDictionary)  <--- ??
+                                let entry = Videos(data: (entry as? JSONDictionary)!) // will loop all @MusicVideo.swift file
+                                videos.append(entry)
                             }
-                        }
+                        
+                            let i = videos.count
+                            print("iTunesApiManager - total count --> \(i)")
+                            print(" ")
+                        
+                        
+                        
+                        
+                            let priority = DISPATCH_QUEUE_PRIORITY_HIGH
+                            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    // completion(result: "JSONSerialization Successful") @part6
+                                    completion(videos)
+                                }
+                            }
+                        
+                        
+                        
                     }
                 } catch { 
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(result: "error in JSONSerialization")
-                    }
+                    // dispatch_async(dispatch_get_main_queue()) {
+                    //    completion(result: "error in JSONSerialization")
+                    // }
+                    
+                    print("error in NSJSONSerialization")
+                    
+                    
                 }   //end of JSONSerialization 
             }
         }   //task
