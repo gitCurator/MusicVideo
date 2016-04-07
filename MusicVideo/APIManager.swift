@@ -99,7 +99,7 @@ class APIManager {
                             dispatch_async(dispatch_get_global_queue(priority, 0)) {
                                 dispatch_async(dispatch_get_main_queue()) {
                                     // completion(result: "JSONSerialization Successful") @part6
-                                    completion(videos)
+                                    completion(videos) // --> pass it to func loadData: completion: [Videos]
                                 }
                             }
                         

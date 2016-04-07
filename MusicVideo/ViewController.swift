@@ -39,7 +39,14 @@ class ViewController: UIViewController {
     
     
 //    func didLoadData(result:String) {   //callBack  + edit videos @part6
+    
     func didLoadData(videos: [Videos]) {
+        
+        
+        
+        //part7
+        print(reachabilityStatus)
+        
         
         self.videos = videos //  <--
         
@@ -64,6 +71,7 @@ class ViewController: UIViewController {
         //      let video = videos[i]
         //      print("\(i) name = \(video.vName)")
         // }
+        
         
         
         
