@@ -8,19 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     var videos = [Videos]() // <--
     
+    
+    
+    
+    
+    @IBOutlet var tableView: UITableView!
 
     @IBOutlet var displayLabel: UILabel!
+    
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        
+        //manual link
+        // tableView.dataSource = self
+        // tableView.delegate = self
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         
@@ -33,7 +45,7 @@ class ViewController: UIViewController {
         //call api
         
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
 
         
 //||        // rather than passing into another func (didLoadData), done it self
@@ -85,6 +97,9 @@ class ViewController: UIViewController {
         // }
         
         
+        //TABLEVIEW
+        
+        tableView.reloadData()
         
         
         
@@ -126,6 +141,35 @@ class ViewController: UIViewController {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChagned", object: nil)
     }
+    
+    
+    
+    
+    // TABLEVIEW
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videos.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let video = videos[indexPath.row]
+        cell.textLabel?.text = ("\(indexPath.row + 1)")
+        cell.detailTextLabel?.text = video.vName
+        
+        return cell
+    }
+    
+
+
+    
+    
     
     
     
