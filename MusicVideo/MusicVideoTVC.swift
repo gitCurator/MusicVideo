@@ -36,15 +36,17 @@ class MusicVideoTVC: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         
         
-        reachabilityStatusChanged()
+        reachabilityStatusChanged()  //will run only once part13
         
         
         
         
         //call api
         
-        let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
+// part13 cut
+//
+//        let api = APIManager()
+//        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
         
         
         //||        // rather than passing into another func (didLoadData), done it self
@@ -126,16 +128,67 @@ class MusicVideoTVC: UITableViewController {
         
         switch reachabilityStatus {
         case NOACCESS : view.backgroundColor = UIColor.redColor()
+            
+            //part 13 view controllers on detached view controllers is discouragged
+            //move back to main queue
+        
+            dispatch_async(dispatch_get_main_queue()) {
+        
+        
+                let alert = UIAlertController(title: "No Internet Access", message: "Please connect", preferredStyle: .Alert)
+            
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+                    action -> () in
+                    print("Cancel")
+                }
+            
+                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
+                    action -> () in
+                    print("delete")
+                }
+            
+                let okAction = UIAlertAction(title: "OK", style: .Default) {
+                    action -> Void in
+                    print("Ok")
+                }
+            
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+            
+                self.presentViewController(alert, animated: true, completion: nil)
+            
+            }
+            
+        default:
+            view.backgroundColor = UIColor.greenColor()
+            if videos.count > 0 {
+                print("Do not refresh API")
+            } else {
+                runAPI()
+ 
+            }
+            
+/*
         // displayLabel.text = "No Internet"
         case WIFI : view.backgroundColor = UIColor.greenColor()
         // displayLabel.text = "Reachability with WIFI"
         case WWAN : view.backgroundColor = UIColor.yellowColor()
         // displayLabel.text = "Reachability with Cellular"
         default:return
+ 
+*/
         }
         
     }
     
+    
+     //part 13 PASTE
+    func runAPI() {
+        let api = APIManager()
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
+        
+    }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChagned", object: nil)
