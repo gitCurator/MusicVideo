@@ -35,30 +35,33 @@ class MusicVideoTVC: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferredFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
         
         reachabilityStatusChanged()  //will run only once part13
         
         
+            //call api
+        
+            // part13 cut
+            //
+            //        let api = APIManager()
+            //        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
         
         
-        //call api
-        
-// part13 cut
-//
-//        let api = APIManager()
-//        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
-        
-        
-        //||        // rather than passing into another func (didLoadData), done it self
-        //||        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json") {
-        //||            (result:String) in
-        //||            print(result)
-        //||        }
-        
+                //||        // rather than passing into another func (didLoadData), done it self
+                //||        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json") {
+                //||            (result:String) in 
+                //||            print(result)
+                //||        }
         
     }
+  
     
     
+    func preferredFontChange() {
+        print("preferredFontChange")
+    }
     
     
     
