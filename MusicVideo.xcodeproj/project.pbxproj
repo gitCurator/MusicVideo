@@ -19,6 +19,7 @@
 		3D93CD111CB3C531006310E4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D93CD101CB3C531006310E4 /* Reachability.m */; };
 		3DDC1C191CB1EB3C0057A1F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */; };
 		3DDC1C1B1CB1EE6A0057A1F0 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */; };
+		3DFF82EB1CC336FC00E550CD /* MusicVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF82EA1CC336FC00E550CD /* MusicVideoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3D93CD101CB3C531006310E4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
+		3DFF82EA1CC336FC00E550CD /* MusicVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +91,6 @@
 		3D842B001CAE75CD00B2D2CA = {
 			isa = PBXGroup;
 			children = (
-				3D93CD0D1CB39748006310E4 /* Obj-c */,
-				3DDC1C171CB1EB1A0057A1F0 /* Utils */,
 				3D842B0B1CAE75CD00B2D2CA /* MusicVideo */,
 				3D842B201CAE75CD00B2D2CA /* MusicVideoTests */,
 				3D842B2B1CAE75CD00B2D2CA /* MusicVideoUITests */,
@@ -111,6 +111,8 @@
 		3D842B0B1CAE75CD00B2D2CA /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				3D93CD0D1CB39748006310E4 /* Obj-c */,
+				3DDC1C171CB1EB1A0057A1F0 /* Utils */,
 				3D842B3D1CAE7DBC00B2D2CA /* Supporting Files */,
 				3D842B3A1CAE7D6100B2D2CA /* Model */,
 				3D842B3B1CAE7D7800B2D2CA /* Controller */,
@@ -140,8 +142,8 @@
 		3D842B3A1CAE7D6100B2D2CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3D842B3E1CAE920E00B2D2CA /* APIManager.swift */,
 				3DDC1C1A1CB1EE6A0057A1F0 /* MusicVideo.swift */,
+				3D842B3E1CAE920E00B2D2CA /* APIManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -149,8 +151,9 @@
 		3D842B3B1CAE7D7800B2D2CA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3D842B0E1CAE75CD00B2D2CA /* ViewController.swift */,
 				3D827E811CBB99E1001D1108 /* MusicVideoTVC.swift */,
+				3DFF82EA1CC336FC00E550CD /* MusicVideoTableViewCell.swift */,
+				3D842B0E1CAE75CD00B2D2CA /* ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				3D93CD0E1CB3C530006310E4 /* MusicVideo-Bridging-Header.h */,
 			);
 			name = "Obj-c";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3DDC1C171CB1EB1A0057A1F0 /* Utils */ = {
@@ -190,6 +194,7 @@
 				3DDC1C181CB1EB3C0057A1F0 /* Constants.swift */,
 			);
 			name = Utils;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +334,7 @@
 				3D842B3F1CAE920E00B2D2CA /* APIManager.swift in Sources */,
 				3D842B0F1CAE75CD00B2D2CA /* ViewController.swift in Sources */,
 				3DDC1C1B1CB1EE6A0057A1F0 /* MusicVideo.swift in Sources */,
+				3DFF82EB1CC336FC00E550CD /* MusicVideoTableViewCell.swift in Sources */,
 				3D842B0D1CAE75CD00B2D2CA /* AppDelegate.swift in Sources */,
 				3D93CD111CB3C531006310E4 /* Reachability.m in Sources */,
 				3DDC1C191CB1EB3C0057A1F0 /* Constants.swift in Sources */,

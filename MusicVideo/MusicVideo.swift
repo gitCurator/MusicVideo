@@ -15,6 +15,10 @@ import Foundation
 
 class Videos {
     
+    
+    //part14 indexing +1
+    var vRank = 0
+    
     // data encap, capture target
     private var _vName:String
     private var _vRights:String

@@ -81,10 +81,17 @@ class APIManager {
                         entries = feed["entry"] as? JSONArray {
                         
                             var videos = [Videos]()
-                            for entry in entries {
-                                
+                        
+                            // part 14 indexing +1: 
+                            // for entry in entries {
+                            for (index, entry) in entries.enumerate() {
+                            
                                 //error! : (data: entry as? JSONDictionary)  <--- ??
-                                let entry = Videos(data: (entry as? JSONDictionary)!) // will loop all @MusicVideo.swift file
+                                // will loop all @MusicVideo.swift file
+                                let entry = Videos(data: (entry as? JSONDictionary)!)
+                                
+                                entry.vRank = index + 1 //  <--indexing part14
+                                
                                 videos.append(entry)
                             }
                         

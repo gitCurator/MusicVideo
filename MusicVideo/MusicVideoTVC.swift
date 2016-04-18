@@ -127,7 +127,7 @@ class MusicVideoTVC: UITableViewController {
     func reachabilityStatusChanged() {
         
         switch reachabilityStatus {
-        case NOACCESS : view.backgroundColor = UIColor.redColor()
+        case NOACCESS : // part14 off: view.backgroundColor = UIColor.redColor()
             
             //part 13 view controllers on detached view controllers is discouragged
             //move back to main queue
@@ -161,7 +161,7 @@ class MusicVideoTVC: UITableViewController {
             }
             
         default:
-            view.backgroundColor = UIColor.greenColor()
+            // part14 off: view.backgroundColor = UIColor.greenColor()
             if videos.count > 0 {
                 print("Do not refresh API")
             } else {
@@ -186,7 +186,7 @@ class MusicVideoTVC: UITableViewController {
      //part 13 PASTE
     func runAPI() {
         let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=20/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
         
     }
     
@@ -214,13 +214,32 @@ class MusicVideoTVC: UITableViewController {
     }
 
     
+    //part14: reuse 'cell'
+    private struct storyboard {
+        static let cellReuseIdentifier = "cell"
+    }
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
+        
+        //let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) <-- reuseCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
+        //let cell is now a custom cell of MusicVideoTableViewCell, so cast it as..
+        
+        
+        
         // Configure the cell...
-        let video = videos[indexPath.row]
-        cell.textLabel?.text = ("\(indexPath.row + 1)")
-        cell.detailTextLabel?.text = video.vName
+        
+        //part14: no longer needed
+        
+        //let video = videos[indexPath.row]
+        cell.video = videos[indexPath.row]
+        
+        
+        //cell.textLabel?.text = ("\(indexPath.row + 1)")
+        //cell.detailTextLabel?.text = video.vName
+        
+        
         
         return cell
     }
