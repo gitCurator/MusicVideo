@@ -34,7 +34,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // tableView.delegate = self
         
         
+        
+        /* error: use of string literal for objc selectors is deprecated; use #selector
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        */
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         
         
         reachabilityStatusChanged()

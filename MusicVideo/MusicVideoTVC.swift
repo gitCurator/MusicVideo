@@ -33,9 +33,18 @@ class MusicVideoTVC: UITableViewController {
         // tableView.delegate = self
         
         
+        /* error: use of string literal for objc selectors is deprecated; use #selector
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferredFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        */
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.preferredFontChange), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
+        
         
         
         reachabilityStatusChanged()  //will run only once part13
@@ -220,6 +229,8 @@ class MusicVideoTVC: UITableViewController {
     //part14: reuse 'cell'
     private struct storyboard {
         static let cellReuseIdentifier = "cell"
+        //for segwa
+        static let segueIdentifier = "musicDetail"
     }
     
     
@@ -292,5 +303,17 @@ class MusicVideoTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == storyboard.segueIdentifier {
+            if let indexpath = tableView.indexPathForSelectedRow {
+                let video = videos[indexpath.row]
+                let dvc = segue.destinationViewController as! MusicVideoDetailVC
+                dvc.videos = video
+                
+            }
+        }
+        
+    }
 
 }

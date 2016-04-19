@@ -38,7 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // if kReachabilityChangedNotification comes in, then call reachabilityChanged routine
         // reachabilityChanged: the colon : is passing a parameter
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        
+        /* error: use of string literal for objc selectors is deprecated; use #selector
+         
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+         */
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.reachabilityChanged(_:)), name: kReachabilityChangedNotification, object: nil)
         
         internetCheck = Reachability.reachabilityForInternetConnection()
         internetCheck?.startNotifier()
