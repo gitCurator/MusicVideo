@@ -35,6 +35,11 @@ class SettingTVC: UITableViewController {
     
     
     
+    @IBOutlet var numberAPICnt: UILabel!
+    
+    @IBOutlet var dragDisplay: UILabel!
+    
+    
     
     
     
@@ -100,6 +105,9 @@ class SettingTVC: UITableViewController {
         securityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         bestImageDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         APICnt.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        
+        numberAPICnt.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        dragDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
 
     }
     
