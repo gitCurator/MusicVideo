@@ -12,7 +12,8 @@ class MusicVideoTVC: UITableViewController {
 
     var videos = [Videos]() // <--
     
-    
+    //output number control
+    var limit = 10
     
     
     
@@ -96,6 +97,15 @@ class MusicVideoTVC: UITableViewController {
         for (index, item) in videos.enumerate() { // <--
             print("\(index) name = \(item.vName)")
         }
+        
+        
+        
+        //title format and headline
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+        title = ("The iTunes Top \(limit)")
+        
+        
+        
         
         // indexing old fashion
         // 1.
@@ -196,11 +206,45 @@ class MusicVideoTVC: UITableViewController {
     }
     
     
+    
+    // select music videoTVC and refresh enable and drag it
+    
+    @IBAction func refresh(sender: UIRefreshControl) {
+        refreshControl?.endRefreshing()
+        runAPI()
+    }
+    
+    
+    
+    
+    //slider count
+    func getAPICount() {
+        if (NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil) {
+            
+            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            limit = theValue
+        }
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss"
+        let refreshDte = formatter.stringFromDate(NSDate())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDte)")
+    }
+
+    
+    
+    
      //part 13 PASTE
     func runAPI() {
-        let api = APIManager()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
         
+        //part 25: slider count
+        getAPICount()
+        
+        
+        let api = APIManager()
+        // output control --> api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
     
     deinit {
