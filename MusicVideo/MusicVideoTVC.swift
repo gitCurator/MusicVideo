@@ -27,6 +27,7 @@ class MusicVideoTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //title = "Top 200 Music Videos"
         
         //manual link
         // tableView.dataSource = self
@@ -203,7 +204,10 @@ class MusicVideoTVC: UITableViewController {
     }
     
     deinit {
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChagned", object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
 
     
