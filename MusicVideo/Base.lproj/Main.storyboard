@@ -213,7 +213,7 @@
                         <barButtonItem systemItem="action" id="3xe-Wt-gdz">
                             <color key="tintColor" red="1" green="0.41226620320000001" blue="0.2793605596" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="socialMedia:" destination="RaT-eR-Fd6" id="z2J-vr-sd0"/>
+                                <action selector="socialMedia:" destination="RaT-eR-Fd6" id="Mx2-nk-qrZ"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
