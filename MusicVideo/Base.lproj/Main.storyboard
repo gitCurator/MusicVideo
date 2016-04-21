@@ -212,6 +212,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Pid-Wi-9nY"/>
                         <barButtonItem systemItem="action" id="3xe-Wt-gdz">
                             <color key="tintColor" red="1" green="0.41226620320000001" blue="0.2793605596" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="socialMedia:" destination="RaT-eR-Fd6" id="z2J-vr-sd0"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <connections>
@@ -350,7 +353,7 @@
                                         <rect key="frame" x="0.0" y="400" width="600" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tnf-6t-Zid" id="1IL-HI-ZdK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oH-Sg-WyI">
@@ -382,7 +385,7 @@
                                         <rect key="frame" x="0.0" y="484" width="600" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vPR-wE-Aes" id="t7w-dB-6QP">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-9p-Pwy">
