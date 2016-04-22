@@ -12,6 +12,13 @@ class MusicVideoTVC: UITableViewController {
 
     var videos = [Videos]() // <--
     
+    
+    //search
+    var filterSearh = [Videos]()
+    let resultSearchController = UISearchController(searchResultsController: nil)
+    
+    
+    
     //output number control
     var limit = 10
     
@@ -105,6 +112,16 @@ class MusicVideoTVC: UITableViewController {
         title = ("The iTunes Top \(limit)")
         
         
+        
+        
+        //search controller
+        definesPresentationContext = true
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.placeholder = "Search for Artist"
+        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
+        
+        //add to tableview
+        tableView.tableHeaderView = resultSearchController.searchBar
         
         
         // indexing old fashion
@@ -264,12 +281,16 @@ class MusicVideoTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        //add search 
+        if resultSearchController.active {
+            return filterSearh.count
+        }
+        
         return videos.count
     }
 
@@ -289,18 +310,23 @@ class MusicVideoTVC: UITableViewController {
         //let cell is now a custom cell of MusicVideoTableViewCell, so cast it as..
         
         
+        //search
+        if resultSearchController.active {
+            cell.video = filterSearh[indexPath.row]
+        } else {
+            cell.video = videos[indexPath.row]
+        }
+        
         
         // Configure the cell...
         
         //part14: no longer needed
         
         //let video = videos[indexPath.row]
-        cell.video = videos[indexPath.row]
         
         
         //cell.textLabel?.text = ("\(indexPath.row + 1)")
         //cell.detailTextLabel?.text = video.vName
-        
         
         
         return cell
@@ -342,20 +368,34 @@ class MusicVideoTVC: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == storyboard.segueIdentifier {
             if let indexpath = tableView.indexPathForSelectedRow {
-                let video = videos[indexpath.row]
+                
+                //search
+                /*
+                if resultSearchController.active {
+                    let video = filterSearh[indexpath.row]
+                }else {
+                    let video = videos[indexpath.row]
+                }
+                //let video = videos[indexpath.row]
+                
+                let dvc = segue.destinationViewController as! MusicVideoDetailVC
+                dvc.videos = video <--- ERROR: video outofscope
+                 */
+                
+                let video: Videos
+                
+                if resultSearchController.active {
+                    video = filterSearh[indexpath.row]
+                }else {
+                    video = videos[indexpath.row]
+                }
+                //let video = videos[indexpath.row]
+                
                 let dvc = segue.destinationViewController as! MusicVideoDetailVC
                 dvc.videos = video
                 
